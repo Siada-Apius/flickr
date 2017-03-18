@@ -16,15 +16,14 @@ class IndexController extends Controller
     {
         $flickr = Flickr::getRecent();
 
-//        dd($flickr);
-
        return view('index.index', compact('flickr'));
     }
 
     public function photo($id)
     {
+        $info = Flickr::getPhotoInfo($id);
         $photo = Flickr::getPhotoSizes($id);
 
-        return view('index.photo', compact('photo'));
+        return view('index.photo', compact('info', 'photo'));
     }
 }

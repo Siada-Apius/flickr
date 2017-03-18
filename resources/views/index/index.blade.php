@@ -14,7 +14,7 @@
                     <ul class="list-inline">
                     @foreach($flickr->photos->photo as $item)
                         <li>
-                            <a href="{{ url('', ['photo' => $item->id, 'farm' => $item->farm]) }}">
+                            <a href="{{ url('photo', [$item->id]) }}">
                                 <img class="img-thumbnail"
                                      src="http://farm{{ $item->farm }}.staticflickr.com/{{ $item->server }}/{{ $item->id }}_{{ $item->secret }}_q.jpg"
                                      alt="{{ $item->title }}" title="{{ $item->title }}">
