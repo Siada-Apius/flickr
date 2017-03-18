@@ -19,6 +19,12 @@ class IndexController extends Controller
        return view('index.index', compact('flickr'));
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function photo($id)
     {
         $info = Flickr::getPhotoInfo($id);

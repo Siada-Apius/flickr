@@ -12,4 +12,4 @@
 */
 
 Route::get('/', 'IndexController@index');
-Route::get('photo/{id}', 'IndexController@photo');
+Route::get('photo/{id}', 'IndexController@photo')->where('id', '[0-9]+');

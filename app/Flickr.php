@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flickr extends Model
 {
+    /**
+     * Make remote requests
+     *
+     * @param $url
+     * @return mixed
+     */
     private static function curl($url)
     {
         $ch = curl_init();
@@ -22,6 +28,11 @@ class Flickr extends Model
         return json_decode($output);
     }
 
+    /**
+     * Get recent photos
+     *
+     * @return mixed
+     */
     public static function getRecent()
     {
         $url = 'https://api.flickr.com/services/rest/?'
@@ -34,6 +45,12 @@ class Flickr extends Model
         return static::curl($url);
     }
 
+    /**
+     * Get photo sizes
+     *
+     * @param $id
+     * @return mixed
+     */
     public static function getPhotoSizes($id)
     {
         $url = 'https://api.flickr.com/services/rest/?'
@@ -47,6 +64,12 @@ class Flickr extends Model
         return static::curl($url);
     }
 
+    /**
+     * Get photo info
+     *
+     * @param $id
+     * @return mixed
+     */
     public static function getPhotoInfo($id)
     {
         $url = 'https://api.flickr.com/services/rest/?'
