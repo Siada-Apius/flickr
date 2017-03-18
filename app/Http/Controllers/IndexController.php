@@ -14,9 +14,9 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $flickr = json_decode(Flickr::getRecent());
+        $flickr = Flickr::getRecent();
 
-        // http://farm{farm_id}.staticflickr.com/{server_id}/{id}_{secret}{size}.jpg
+//        dd($flickr);
 
        return view('index.index', compact('flickr'));
     }

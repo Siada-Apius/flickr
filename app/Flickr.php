@@ -6,17 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Flickr extends Model
 {
-    public static function getRecent()
-    {
-        $url = "https://api.flickr.com/services/rest/?"
-        . "method=flickr.photos.getRecent"
-        . "&api_key=c64fda5a2ce5999966df03f0c5123f7b"
-        . "&format=json"
-        . "&nojsoncallback=1"
-        . "&auth_token=72157681449296846-17ef98465d39cef4"
-        . "&api_sig=108768be60825495f90457ec3ffc29c6"
-        ;
+    private $api_key = 'ed4aaa08e7e03a3168f5143248f665b9';
 
+    private static function curl($url)
+    {
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -31,7 +24,33 @@ class Flickr extends Model
         return $output;
     }
 
+    public static function getRecent()
+    {
+        $url = 'https://api.flickr.com/services/rest/?'
+            . 'method=flickr.photos.getRecent'
+            . '&api_key=ed4aaa08e7e03a3168f5143248f665b9'
+            . '&format=json'
+            . '&nojsoncallback=1'
+        ;
+
+        return json_decode(static::curl($url));
+    }
+
     public static function getPhotoSizes($id)
     {
+        $url = 'https://api.flickr.com/services/rest/?'
+            . 'method=flickr.photos.getSizes'
+            . '&api_key=ed4aaa08e7e03a3168f5143248f665b9'
+            . '&photo_id=' . $id
+            . '&format=json'
+            . '&nojsoncallback=1'
+        ;
+
+        return json_decode(static::curl($url));
+    }
+
+    public static function getPhotoInfo($id, $farm)
+    {
+
     }
 }
