@@ -26,7 +26,7 @@
                                     </div>
 
                                     <div class="col-md-10">
-                                        <p class="lead">Photos size</p>
+                                        <p class="lead">Photo size</p>
                                         <table class="table table-responsive table-bordered">
                                             <thead>
                                             <tr>

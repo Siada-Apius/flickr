@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Recent Flickrs Photo</h1>
+                    <h1>Recent Flickr Photos</h1>
                     <p class="lead">A list of the latest public photos uploaded to flickr.</p>
 
                     @if($flickr->stat == 'ok')
