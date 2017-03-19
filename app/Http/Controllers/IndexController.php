@@ -20,18 +20,19 @@ class IndexController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function photo($id)
+    public function photo()
     {
-//        $info = Flickr::getPhotoInfo($id);
-//        $photo = Flickr::getPhotoSizes($id);
-
-        return view('index.photo', compact('id'));
+        return view('index.photo');
     }
 
 
+    /**
+     * Get recent photos
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function recent()
     {
         $flickr = Flickr::getRecent();
@@ -40,6 +41,12 @@ class IndexController extends Controller
     }
 
 
+    /**
+     * Get photo size and info
+     *
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function photoInfo($id)
     {
         $info = Flickr::getPhotoInfo($id);
