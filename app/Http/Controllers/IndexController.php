@@ -14,9 +14,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $flickr = Flickr::getRecent();
-
-       return view('index.index', compact('flickr'));
+        return view('index.index');
     }
 
     /**
@@ -27,9 +25,26 @@ class IndexController extends Controller
      */
     public function photo($id)
     {
+//        $info = Flickr::getPhotoInfo($id);
+//        $photo = Flickr::getPhotoSizes($id);
+
+        return view('index.photo', compact('id'));
+    }
+
+
+    public function recent()
+    {
+        $flickr = Flickr::getRecent();
+
+        return response()->json(compact('flickr'));
+    }
+
+
+    public function photoInfo($id)
+    {
         $info = Flickr::getPhotoInfo($id);
         $photo = Flickr::getPhotoSizes($id);
 
-        return view('index.photo', compact('info', 'photo'));
+        return response()->json(compact('info', 'photo'));
     }
 }

@@ -13,3 +13,8 @@
 
 Route::get('/', 'IndexController@index');
 Route::get('photo/{id}', 'IndexController@photo')->where('id', '[0-9]+');
+
+Route::group(['prefix' => 'api'], function () {
+    Route::get('recent', 'IndexController@recent');
+    Route::get('photo/{id}', 'IndexController@photoInfo');
+});
